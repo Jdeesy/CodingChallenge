@@ -1,0 +1,47 @@
+<%= flash[:notice] %>
+<h1>INDEX</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Auction Name</th>
+			<th>Street Name</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Zip</th>
+			<th>Vehicle Year</th>
+			<th>Vehicle Make</th>
+			<th>Vehicle Model</th>
+			<th>Vehicle Stock Number</th>
+			<th>Winning Bid</th>
+			<th>Seller Payout</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @auctions.each do |auction| %>
+			<tr>
+				<td><%= auction.name %></td>
+				<td><%= auction.address %></td>
+				<td><%= auction.city %></td>
+				<td><%= auction.state %></td>
+				<td><%= auction.zip %></td>
+				<td><%= auction.vehicle_year %></td>	
+				<td><%= auction.vehicle_make %></td>
+				<td><%= auction.vehicle_model %></td>
+				<td><%= auction.vehicle_stock_number %></td>
+				<td><%= auction.winning_bid %></td>
+				<td><%= auction.seller_payout %></td>
+				<td><%= auction.description %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<div>
+	<h4>Import Data</h4>
+	<%= form_tag import_auctions_path, multipart: true do %>
+	  <%= file_field_tag :file %>
+	  <%= submit_tag "Import" %>
+	<% end %>
+</div>
